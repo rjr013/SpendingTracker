@@ -26,23 +26,12 @@ namespace SpendingTracker
                 }
 
             }
-            var ordered = topCategory.OrderByDescending(x => x.Value);
-
-            int counter = 0;
+            var ordered = topCategory.OrderByDescending(x => x.Value).Take(5).ToDictionary(pair => pair.Key,pair => pair.Value);
             
-            Dictionary<string, double> temp = new Dictionary<string, double>();
-            foreach (var item in ordered)
-            {
-                if(counter > 4)
-                {
-                    break;
-                }
-                temp.Add(item.Key, item.Value);
-                counter++;
-            }
-
-            return temp;
+            return ordered;
         }
+
+
         public static Dictionary<string, double> TopPlace(ArrayList list)
         {
             
@@ -60,21 +49,12 @@ namespace SpendingTracker
                 }
             }
 
-            var ordered = topPlace.OrderByDescending(x => x.Value);
-            Dictionary<string, double> temp = new Dictionary<string, double>();
-            int counter = 0;
-            foreach(var item in ordered)
-            {
-                if(counter > 4)
-                {
-                    break;
-                }
-                temp.Add(item.Key, item.Value);
-                counter++;
-            }
-
-            return temp;
+            var ordered = topPlace.OrderByDescending(x => x.Value).Take(5).ToDictionary(pair => pair.Key, pair => pair.Value);
+            return ordered;
+            
         }
+
+
         public static double TopTransaction(ArrayList list)
         {
             double max = 0;
@@ -87,6 +67,8 @@ namespace SpendingTracker
             }
             return max;
         }
+
+
         public static Dictionary<string, int> TopVisited(ArrayList list)
         {
             
@@ -104,25 +86,12 @@ namespace SpendingTracker
                 }
                 
             }
-            //try take... topVisited.OrderByDescending(x => x.Value).take(3)
-            var ordered = topVisited.OrderByDescending(x => x.Value);
+            var ordered = topVisited.OrderByDescending(x => x.Value).Take(5).ToDictionary(pair => pair.Key, pair => pair.Value);
 
-            Dictionary<string, int> temp = new Dictionary<string, int>();
-            int counter = 0;
-            foreach(var item in ordered)
-            {
-                if(counter > 4)
-                {
-                    break;
-                }
-
-                temp.Add(item.Key, item.Value);
-                counter++;
-            }
-
-
-            return temp;
+            return ordered;
         }
+
+
         public static Dictionary<string, double> CompareToPreviousMonth(ArrayList months)
         {
             

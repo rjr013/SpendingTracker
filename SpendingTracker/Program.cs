@@ -15,13 +15,43 @@ namespace SpendingTracker
 
             DateTime today = DateTime.Today;
             Months month = new Months("October");
-            month.AddTransaction("Wells Fargo", 421, "01", "Rent");
             month.AddTransaction("Gas Station", 25, "01", "Gas");
-            month.AddTransaction("Fitness Connection", 23.82, "01", "Fitness");
+            month.AddTransaction("Wells Fargo", 421, "01", "Rent");
             month.AddTransaction("HEB", 17.31, "01", "Groceries");
-
+            month.AddTransaction("Fitness Connection", 23.82, "01", "Fitness");
             months.Add(month);
 
+            month = new Months("December");
+            months.Add(month);
+
+
+            
+
+            Console.WriteLine("Enter 1: for current month");
+            Console.WriteLine("Enter 2: for a different month");
+            int monthOption;
+           
+            while (true) {
+                try
+                {
+                    monthOption = Convert.ToInt32(Console.ReadLine());
+                    if (monthOption > 0 && monthOption < 3)
+                    {
+                        switch (monthOption)
+                        {
+                            case 1:
+                                
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Please enter 1 or 2");
+                }
+                catch
+                {
+                    Console.WriteLine("please enter number");
+                }
+            }
             foreach (Months item in months)
             {
                 if (item.Month.Equals(today.ToString("MMMM")))
@@ -31,8 +61,7 @@ namespace SpendingTracker
                 }
                 else
                 {
-                    Console.WriteLine(item.Month);
-                    Menu(item);
+                    
 
                 }
                 
@@ -47,7 +76,7 @@ namespace SpendingTracker
         {
             int userInput = 0;
             Boolean quit = false;
-            PrintMenu();
+            PrintMainMenu();
             while (!quit)
             {
                 try
@@ -117,7 +146,7 @@ namespace SpendingTracker
                         
                         break;
                     case 9:
-                        PrintMenu();
+                        PrintMainMenu();
                         break;
                     default:
                         Console.WriteLine("please enter number between 0 and 9");
@@ -126,7 +155,7 @@ namespace SpendingTracker
                 }
             }
         }
-        private static void PrintMenu()
+        private static void PrintMainMenu()
         {
             Console.WriteLine("----------------Menu----------------");
             Console.WriteLine("Enter 0: to quit");
@@ -142,5 +171,6 @@ namespace SpendingTracker
             Console.WriteLine("------------------------------------");
 
         }
+        
     }
 }
